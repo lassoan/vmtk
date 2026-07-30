@@ -105,7 +105,7 @@ void vtkvmtkSteepestDescentShooter::FindNearestPolyLinePoint(double* currentPoin
       lineClosestPoint[2] = closestPoint[2];
       }
     
-    delete weights;
+    delete[] weights;
     }
 }
 
