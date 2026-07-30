@@ -253,12 +253,15 @@ int vtkvmtkStaticTemporalStreamTracer::RequestData(
   if (seeds)
     {
     double lastPoint[3];
-    vtkAbstractInterpolatedVelocityField * func;
+    vtkAbstractInterpolatedVelocityField * func = 0;
     int maxCellSize = 0;
     if (this->CheckInputs(func, &maxCellSize) != VTK_OK)
       {
       vtkDebugMacro("No appropriate inputs have been found. Can not execute.");
-      func->Delete();
+      if (func)
+        {
+        func->Delete();
+        }
       seeds->Delete();
       startTimes->Delete();
       integrationDirections->Delete();
