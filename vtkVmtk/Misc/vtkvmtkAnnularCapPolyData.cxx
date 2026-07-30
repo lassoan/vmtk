@@ -120,6 +120,7 @@ int vtkvmtkAnnularCapPolyData::RequestData(
       cellEntityIdsArray->Delete();
       }
     boundaryExtractor->Delete();
+    return 1;
     }
 
   vtkPoints* barycenters = vtkPoints::New();
