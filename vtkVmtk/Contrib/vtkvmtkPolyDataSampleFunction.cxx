@@ -53,7 +53,7 @@ vtkvmtkPolyDataSampleFunction::~vtkvmtkPolyDataSampleFunction()
     this->SampleArrayName = NULL;
     }
 
-  this->ImplicitFunction = NULL;
+  this->SetImplicitFunction(NULL);
 }
 
 
