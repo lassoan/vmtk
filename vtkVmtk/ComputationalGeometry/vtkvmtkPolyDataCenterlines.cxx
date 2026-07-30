@@ -266,6 +266,10 @@ int vtkvmtkPolyDataCenterlines::RequestData(
     
     internalTetrahedraExtractor->Update();
 
+    if (this->DelaunayTessellation)
+    {
+      this->DelaunayTessellation->UnRegister(this);
+    }
     this->DelaunayTessellation = internalTetrahedraExtractor->GetOutput();
     this->DelaunayTessellation->Register(this);
 
@@ -297,6 +301,10 @@ int vtkvmtkPolyDataCenterlines::RequestData(
     }
     this->VoronoiDiagram = vtkPolyData::New();
     this->VoronoiDiagram->DeepCopy(voronoiDiagram);
+    if (this->SimplifyVoronoi)
+    {
+      voronoiDiagram->UnRegister(this);
+    }
     voronoiDiagramFilter->Delete();
   }
 
